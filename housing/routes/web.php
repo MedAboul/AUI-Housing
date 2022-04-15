@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,20 @@ Route::get('/', function () {
     return view('Home.AdminHome');
 });
 
-Route::get('/hello',function() {
-
+Route::get('/home', function () {
     return view('Home.AdminHome');
 });
+
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Add Items
+Route::get('/addItem',[ItemController::class, 'create']);
+Route::post('/storeItem',[ItemController::class,'store']);
+/*Route::get('/addItem', function () {
+    return view('Home.AdminHome');
+});*/
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
